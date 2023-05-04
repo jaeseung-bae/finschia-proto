@@ -159,7 +159,24 @@ publishing {
 }
 
 signing {
-    val signingKey: String? by project
+//    val signingKey: String? by project
+    val signingKey = "-----BEGIN PGP PRIVATE KEY BLOCK-----\n" +
+            "\n" +
+            "lIYEZEEAVBYJKwYBBAHaRw8BAQdAUE5dt2/tSSoGZfRk8pkzv5/ptIrrJ47oFVMW\n" +
+            "0lGuKM/+BwMCHQlO0AzMdWP9Cyd9Vao+CEzFsVL19KAl3FG2KA37+6WOL2Zk5Y+q\n" +
+            "UpLXgD3gjLCCv3tDKi/ZprJ2U3Q+uGNa5nFJEXs/33SR/UuVHVvBMbQoamFlc2V1\n" +
+            "bmcuYmFlIDxqYWVzZXVuZy5iYWVAbGluZWNvcnAuY29tPoiTBBMWCgA7AhsDBQsJ\n" +
+            "CAcCAiICBhUKCQgLAgQWAgMBAh4HAheAFiEEOuNbL5k9bADEqfz1Y5viwoOMffIF\n" +
+            "AmRBCYUACgkQY5viwoOMffI/HgD/XALgpWd9g5sTHe+ID/Pev/u17yplAnUfap2O\n" +
+            "vrReoVAA/iRPtkB/ZYY+xi+A6QvYMyyWc02WxJpJLmSHcDPDEm4InIsEZEEAVBIK\n" +
+            "KwYBBAGXVQEFAQEHQFEKGoWJRHYmDnEsdJ1LDZpbDXDJN/7pX01RMWDosX5EAwEI\n" +
+            "B/4HAwJT7uVj661dOf1gctiJgfRleljao2tBXkbJgxkQtTwl7BZVPsOu/2E6oSt5\n" +
+            "q+BRyGnnmc0r7vHDSiPSk1UMs18gVx0uWBwOp+sMASN7Tp65iH4EGBYKACYWIQQ6\n" +
+            "41svmT1sAMSp/PVjm+LCg4x98gUCZEEAVAIbDAUJA8JnAAAKCRBjm+LCg4x98kqZ\n" +
+            "AP9zc279jz3lGJE9w5/jAv1WCSxmxBNPEF0I7oAOdEre5wEAmXWi2jqtCNdozsXm\n" +
+            "zR8HpBokNiojIrAMPoOuqBM0EQY=\n" +
+            "=8zwV\n" +
+            "-----END PGP PRIVATE KEY BLOCK-----\n"
     val signingPassword: String? by project
     useInMemoryPgpKeys(signingKey, signingPassword)
     sign(publishing.publications["mavenJava"])
