@@ -1,5 +1,6 @@
 name: Publish package to Maven Central Repository
 on:
+  pull_request:
   push:
     # Sequence of patterns matched against refs/tags
     tags:
@@ -34,7 +35,7 @@ jobs:
           OSSRH_USERNAME: ${{ secrets.OSSRH_USERNAME }}
           OSSRH_PW: ${{ secrets.OSSRH_PW }}
           ORG_GRADLE_PROJECT_signingKey: ${{ secrets.OSSRH_SIGNING_KEY }}
-          ORG_GRADLE_PROJECT_signingPassword: ${{ secrets.OSSRH_PASSPHRASE }}
+          ORG_GRADLE_PROJECT_signingPassword: ${{ secrets.OSSRH_PHRASE }}
           RELEASE_VERSION: ${{ github.ref_name }}
         run: |
           cd java
