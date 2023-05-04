@@ -30,13 +30,7 @@ jobs:
       - name: List keys
         run: gpg -K
 
-      - name: Publish to maven
-        env:
-          OSSRH_USERNAME: ${{ secrets.OSSRH_USERNAME }}
-          OSSRH_PW: ${{ secrets.OSSRH_PW }}
-          ORG_GRADLE_PROJECT_signingKey: ${{ secrets.OSSRH_SIGNING_KEY }}
-          ORG_GRADLE_PROJECT_signingPassword: ${{ secrets.OSSRH_PHRASE }}
-          RELEASE_VERSION: ${{ github.ref_name }}
+      - name: Checkout submodules(protos)
         run: |
           source ./env
           echo "module update"
@@ -52,8 +46,15 @@ jobs:
           
           cd ./repositories/ibc-go
           git checkout $IBC_GO_VERSION
-          cd -
-          
+
+      - name: Publish to maven
+        env:
+          OSSRH_USERNAME: ${{ secrets.OSSRH_USERNAME }}
+          OSSRH_PW: ${{ secrets.OSSRH_PW }}
+          ORG_GRADLE_PROJECT_signingKey: ${{ secrets.OSSRH_SIGNING_KEY }}
+          ORG_GRADLE_PROJECT_signingPassword: ${{ secrets.OSSRH_PHRASE }}
+          RELEASE_VERSION: ${{ github.ref_name }}
+        run: |
           echo "run gradle publish"
           cd java
           ./gradlew publish -DVERSION=$RELEASE_VERSION
