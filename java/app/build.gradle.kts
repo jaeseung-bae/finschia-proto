@@ -100,16 +100,16 @@ tasks.javadoc {
 }
 
 publishing {
-    val groupIdVal = "network.finschia"
-    val artifactIdVal = "finschia-proto"
+    val groupIdVal = "io.github.jaeseung-bae.sdk"
+    val artifactIdVal = "remove-me-test-purpose"
     val versionVal: String? = System.getProperty("VERSION")
 
     val pomName = "finschia"
     val pomDesc = artifactIdVal
-    val pomUrl = "https://github.com/Finschia/finschia-proto"
-    val pomScmConnection = "scm:git:git://github.com/Finschia/finschia-proto.git"
-    val pomDeveloperConnection = "scm:git:ssh://github.com/Finschia/finschia-proto.git"
-    val pomScmUrl = "https://github.com/Finschia/finschia-proto"
+    val pomUrl = "https://github.com/jaeseung-bae"
+    val pomScmConnection = "scm:git:git://github.com/jaeseung.bae/test.git"
+    val pomDeveloperConnection = "scm:git:ssh://github.com/jaeseung.bae/test.git"
+    val pomScmUrl = "https://github.com/jaeseung-bae"
 
     val ossrhUserName = System.getenv("OSSRH_USERNAME")
     val ossrhPassword = System.getenv("OSSRH_PW")
@@ -119,7 +119,7 @@ publishing {
             groupId = groupIdVal
             artifactId = artifactIdVal
             version = versionVal?.substring(1) // without v
- 
+
             from(components["java"])
             pom {
                 name.set(pomName)
@@ -135,7 +135,7 @@ publishing {
                     developer {
                         id.set("dev")
                         name.set("dev")
-                        email.set("dev@finschia.org")
+                        email.set("dev@abc.org")
                     }
                 }
                 scm {
