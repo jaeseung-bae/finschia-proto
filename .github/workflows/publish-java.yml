@@ -1,5 +1,6 @@
 name: Publish package to Maven Central Repository
 on:
+  pull_request:
   push:
     # Sequence of patterns matched against refs/tags
     tags:
@@ -34,8 +35,25 @@ jobs:
           OSSRH_USERNAME: ${{ secrets.OSSRH_USERNAME }}
           OSSRH_PW: ${{ secrets.OSSRH_PW }}
           ORG_GRADLE_PROJECT_signingKey: ${{ secrets.OSSRH_SIGNING_KEY }}
-          ORG_GRADLE_PROJECT_signingPassword: ${{ secrets.OSSRH_PASSPHRASE }}
+          ORG_GRADLE_PROJECT_signingPassword: ${{ secrets.OSSRH_PHRASE }}
           RELEASE_VERSION: ${{ github.ref_name }}
         run: |
+          source ./env
+          echo "module update"
+          git submodule update --init --remote
+          
+          cd ./repositories/finschia-sdk
+          git checkout $FINSCHIA_SDK_VERSION
+          cd -
+          
+          cd ./repositories/wasmd
+          git checkout $WASMD_VERSION
+          cd -
+          
+          cd ./repositories/ibc-go
+          git checkout $IBC_GO_VERSION
+          cd -
+          
+          echo "run gradle publish"
           cd java
           ./gradlew publish -DVERSION=$RELEASE_VERSION
