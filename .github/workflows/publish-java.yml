@@ -38,4 +38,4 @@ jobs:
           RELEASE_VERSION: ${{ github.ref_name }}
         run: |
           cd java
-          ./gradlew publish -DVERSION=$RELEASE_VERSION
+          ./gradlew :app:publish -DVERSION=$RELEASE_VERSION --debug
