@@ -31,6 +31,11 @@ dependencies {
     api(libs.protobuf.kotlin)
 }
 
+java {
+    withSourcesJar()
+    withJavadocJar()
+}
+
 sourceSets {
     main {
         proto {
