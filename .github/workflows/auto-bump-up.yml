@@ -1,9 +1,7 @@
 name: Create branch on new tag in finschia
 
 on:
-  schedule:
-    # Every day
-    - cron: "0 1 * * *"
+  pull_request: 
 
 jobs:
   create-bump-up-PR:
