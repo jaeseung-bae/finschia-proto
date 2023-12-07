@@ -1,9 +1,7 @@
 name: Create branch on new tag in finschia
 
 on:
-  schedule:
-    # Every day
-    - cron: "0 1 * * *"
+  pull_request: 
 
 jobs:
   create-bump-up-PR:
@@ -69,7 +67,7 @@ jobs:
         if: env.NEW_TAG
         run: |
           chmod +x ./build.sh
-          ./build.sh
+          bash -xe build.sh
 
       - name: Install Node.js
         uses: actions/setup-node@v2
